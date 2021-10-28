@@ -1,0 +1,170 @@
+.content {
+   margin: 1em 8em;
+}
+
+.FormPaciente {
+   color: var(--Color-Text1);
+}
+
+.FormPaciente h1,
+.FormPaciente h3 {
+   text-align: center;
+}
+
+.FormPaciente h1.title {
+   font-family: "Italic";
+   color: var(--Color-Colgate);
+}
+
+.FormPaciente h3.subtitle {
+   font-family: "LightItalic";
+   color: var(--Color-Text1);
+   margin: 10px 0 0 0;
+   /* font-size: 1em; */
+}
+
+.divFormPaciente .fecha {
+   display: flex;
+   align-items: baseline;
+}
+
+.divFormPaciente .fecha h3 {
+   margin-right: 10px;
+}
+
+.divFormPaciente .fecha p {
+   margin-right: 10px;
+   padding: 10px;
+   background: var(--Color-Background);
+   border-radius: 10px;
+}
+
+.divFormPaciente .InputText {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+}
+
+.divFormPaciente .InputText .labelInput {
+   margin-right: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+   border: 0px;
+   background: var(--Color-Background);
+   border-radius: 10px;
+   outline: none;
+   padding: 4px 10px;
+   /* margin: 0 10px; */
+   font-family: "Light";
+   font-size: 1em;
+}
+
+.informacionPersonal input[type="text"] {
+   text-transform: capitalize;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type=number] {
+   -moz-appearance: textfield;
+}
+
+h2.informacion {
+   color: #fff;
+   background: var(--Color-Colgate);
+   text-align: center;
+   font-family: "ExtraLightItalic";
+   font-weight: 400;
+   padding: 10px 0;
+}
+
+h3.sub2 {
+   text-align: left !important;
+}
+
+.inpRadio {
+   position: relative;
+   padding-left: 20px;
+   cursor: pointer;
+   margin: 0 1em 0 0;
+}
+
+.inpRadio+.inpRadio {
+   margin-left: 20px;
+}
+
+.inpRadio input[type="radio"] {
+   display: none;
+}
+
+.inpRadio span {
+   height: 10px;
+   width: 10px;
+   border-radius: 50%;
+   border: 1px solid var(--Color-ICBF);
+   display: block;
+   position: absolute;
+   left: 0px;
+   top: 4px;
+}
+
+.inpRadio span::after {
+   content: "";
+   width: 7px;
+   height: 7px;
+   background: var(--Color-ICBF);
+   display: block;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%) scale(0);
+   border-radius: 50%;
+   transition: 300ms ease-in-out 0s;
+}
+
+.inpRadio input[type="radio"]:checked~span::after {
+   transform: translate(-50%, -50%) scale(1);
+}
+
+.divFormPaciente .divInputText {
+   /* width: 100%; */
+   display: flex;
+   flex-wrap: wrap;
+}
+
+ol {
+   text-align: justify;
+}
+
+ol li {
+   margin: 1em 0;
+}
+
+ol li p {
+   margin: 0;
+}
+
+.buttonSubmit {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+input[type="submit"] {
+   background: var(--Color-Azul-Colgate);
+   font-family: "BoldItalic";
+   font-size: 1.2em;
+   color: #fff;
+   border: 0px;
+   border-radius: 10px;
+   padding: 10px 1em;
+   margin: 0 auto;
+}

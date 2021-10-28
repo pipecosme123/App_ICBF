@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "Regular";
+    src: url('../fonts/ColgateReady-Regular.ttf');
+  }
+  
+  @font-face {
+    font-family: "Bold";
+    src: url('../fonts/ColgateReady-Bold.ttf');
+  }
+  
+  @font-face {
+    font-family: "BoldItalic";
+    src: url('../fonts/ColgateReady-BoldItalic.ttf');
+  }
+  
+  @font-face {
+    font-family: "ExtraLight";
+    src: url('../fonts/ColgateReady-ExtraLight.ttf');
+  }
+  
+  @font-face {
+    font-family: "ExtraLightItalic";
+    src: url('../fonts/ColgateReady-ExtraLightItalic.ttf');
+  }
+  
+  @font-face {
+    font-family: "Heavy";
+    src: url('../fonts/ColgateReady-Heavy.ttf');
+  }
+  
+  @font-face {
+    font-family: "HeavyItalic";
+    src: url('../fonts/ColgateReady-HeavyItalic.ttf');
+  }
+  
+  @font-face {
+    font-family: "Italic";
+    src: url('../fonts/ColgateReady-Italic.ttf');
+  }
+  
+  @font-face {
+    font-family: "Light";
+    src: url('../fonts/ColgateReady-Light.ttf');
+  }
+  
+  @font-face {
+    font-family: "LightItalic";
+    src: url('../fonts/ColgateReady-LightItalic.ttf');
+  }
