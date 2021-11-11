@@ -1,38 +1,49 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react';
 import InputText from './InputText';
+// import { toast } from 'react-toastify';
+import '../css/FormPaciente.css';
+// import Swal from 'sweetalert2';
+// import { RoutersLinks } from '../Constants/RoutersLinks';
 
-const FormAntecedentes = ({ isFormPaciente, documentoPaciente }) => {
+const FormAntecedentes = ({ isFormPaciente, idPaciente }) => {
 
    const [data, setData] = useState({});
 
    const hnadleInputText = (e) => {
+      const { name, value } = e.target;
       const newData = { ...data };
-      newData[e.target.name] = e.target.value.trim();
+      newData[name] = value.trim();
       setData(newData);
    }
 
    const handleSubmitAntecedentes = (e) => {
       e.preventDefault();
 
-      console.log(isFormPaciente, documentoPaciente);
+      // setData({ documentoPaciente: documentoPaciente })
 
-      if (isFormPaciente) {
+      // if (isFormPaciente) {
 
-         setData({ documentoPaciente: documentoPaciente })
+      //    axios.post('https://appicbfcolgate.kagencia.com/api/antecedentes', {
+      //       ...data,
+      //       idPaciente: idPaciente
+      //    })
+      //       .then(function (response) {
+      //          console.log(response.data);
+      //          Swal.fire({
+      //             title: '',
+      //             icon: 'success',
+      //             text: "Paciente y antecedentes médicos y odontológicos registrados",
+      //             confirmButtonText: `<a href="${RoutersLinks.formPacientes}">Ok</a>`
+      //          })
+      //       })
+      //       .catch(function (error) {
+      //          console.log(error);
+      //       });
 
-         axios.post('http://localhost:3032/antecedentes', data)
-            .then(function (response) {
-               console.log(response.data);
-
-            })
-            .catch(function (error) {
-               console.log(error);
-            });
-         
-      }else{
-         console.log("No se ha enviado el primer formulario")
-      }
+      // } else {
+      //    console.log("No se ha enviado el primer formulario")
+      // }
    }
 
    return (
@@ -86,7 +97,7 @@ const FormAntecedentes = ({ isFormPaciente, documentoPaciente }) => {
                   <p>Fecha del último control médico:</p>
                   <div className="optionsQuestions">
                      <InputText type="date" arrayInput={{ id: "fechaControlMedico", title: "¿Cuál?" }} handle={hnadleInputText} />
-                     <InputText type="text" arrayInput={{ id: "talla", title: "Talla" }} handle={hnadleInputText} />
+                     <InputText type="text" arrayInput={{ id: "talla", title: "Talla" }} handle={hnadleInputText} /><p>M</p>
                      <InputText type="text" arrayInput={{ id: "peso", title: "Peso" }} handle={hnadleInputText} />
                   </div>
                </li>
@@ -325,7 +336,6 @@ const FormAntecedentes = ({ isFormPaciente, documentoPaciente }) => {
                <input type="submit" value="Guardar Antecedentes" />
             </div>
          </form>
-
       </div>
    );
 };

@@ -1,7 +1,21 @@
 @import url('./fonts.css');
 @import url('./GlobalVar.css');
 
-body{
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
   margin: 0;
+  margin-bottom: 40px;
   font-family: "Regular";
+}
+
+.visible{
+  display: block;
+}
+
+.noVisible{
+  display: none;
 }

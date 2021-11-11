@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import FormAntecedentes from '../Components/FormAntecedentes';
 import FormInformacionPersonal from '../Components/FormInformacionPersonal';
+import { ToastContainer, toast } from 'react-toastify';
 import '../css/FormPaciente.css';
 
 const FormPaciente = () => {
 
+   window.document.title = 'Información personal del paciente - ICBF';
    const [submitInfo, setsubmitInfo] = useState(false);
    const [documentoPaciente, setDocumentoPaciente] = useState(null);
    const fecha = new Date();
+   
 
    const submitFormPaciente = (documento) => {
       setDocumentoPaciente(documento);
       setsubmitInfo(true);
+      toast.success  ("Usuario Registrado", {
+         position: toast.POSITION.TOP_RIGHT,
+         autoClose: 5000
+      })
    }
 
    return (
@@ -20,6 +27,7 @@ const FormPaciente = () => {
          <h1 className="title">Antecedentes de salud general y bucal del niño(a)</h1>
          <h3 className="subtitle">(Formato para diligenciar antes de la valoración)</h3>
 
+         <ToastContainer />
 
          <div className="divFormPaciente">
 
@@ -30,12 +38,16 @@ const FormPaciente = () => {
                <p>{fecha.getFullYear()}</p>
             </div>
 
-            <FormInformacionPersonal submitFormPaciente={submitFormPaciente} />
+            <div className={!submitInfo ? "visible" : "noVisible"}>
+               <FormInformacionPersonal submitFormPaciente={submitFormPaciente}  />
+            </div>
 
-            <h2 className="informacion"><b>Cordial saludo</b>, antes de realizar la valoración odontológica al niño(a), es importante conocer sus antecedentes médicos y odontológicos</h2>
-            <h3 className="sub2">Maque con una X una de las opciones:</h3>
+            <div className={submitInfo ? "visible" : "noVisible"}>
+               <h2 className="informacion"><b>Cordial saludo</b>, antes de realizar la valoración odontológica al niño(a), es importante conocer sus antecedentes médicos y odontológicos</h2>
+               <h3 className="sub2">Maque con una X una de las opciones:</h3>
 
-            <FormAntecedentes isFormPaciente={submitInfo} documentoPaciente={documentoPaciente} />
+               <FormAntecedentes isFormPaciente={submitInfo} idPaciente={documentoPaciente} />
+            </div>
          </div>
 
 
@@ -44,3 +56,6 @@ const FormPaciente = () => {
 };
 
 export default FormPaciente;
+
+// className={!submitInfo ? "visible" : "noVisible"}
+// className={submitInfo ? "visible" : "noVisible"}
