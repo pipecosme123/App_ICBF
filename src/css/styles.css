@@ -1,0 +1,49 @@
+.noVisible{
+   display: none;
+}
+
+.visible{
+   display: block;
+}
+
+.boxContainer{
+   /* background: #87cefa; */
+   border-radius: 15px;
+   border: 0.5px solid rgb(175, 175, 175);
+   padding: 1em 2em;
+   margin-top: 3em;
+}
+
+.boxCenter{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.titleH1{
+   text-align: center;
+   margin: 1em 0;
+}
+
+.inputLarge{
+   display: block;
+   width: 100%;
+}
+
+.titleForm{
+   padding: 1em 0 0.5em 0;
+   text-align: center;
+   /* font-size: 8em; */
+}
+
+.buttonSubmit{
+   margin: 10em auto;
+   background: magenta;
+}
+
+.submitButton{
+   text-align: center;
+   /* padding: 0 50%; */
+   /* display: flex; */
+   /* justify-content: center; */
+}

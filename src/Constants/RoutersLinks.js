@@ -1,4 +1,7 @@
 export const RoutersLinks = {
-   formPacientes: "/",
-   // antecedentes: "/Antecedentes",
+   profile: "/",
+   createUser: "/createUser",
+   clinicalHistory: "/clinicalHistory",
+   aiepi: "/aiepi",
 }
+// profile: "/profile",
