@@ -8,8 +8,8 @@ import IconButton from '@mui/material/IconButton';
 
 const Navbar = () => {
    return (
-      <Box sx={{ flexGrow: 1 }} disableElevation>
-      <AppBar position="static" >
+      <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed" elevation={0}>
         <Toolbar>
           <IconButton
             size="large"

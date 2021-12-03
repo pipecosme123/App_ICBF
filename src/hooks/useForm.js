@@ -18,7 +18,7 @@ export const useForm = (initialForm, validationForm, idPatient) => {
          ...form,
          [name]: value
       });
-      console.log(form);
+      // console.log(form);
    };
 
    const handleBlur = (e) => {
@@ -40,8 +40,8 @@ export const useForm = (initialForm, validationForm, idPatient) => {
 
       setError(validationForm(form));
       setLoading(true);
-      // axios.post('https://001pruebas.kagencia.com/infoPaciente', form)
-      axios.post('http://localhost:3132/', form)
+      axios.post('https://001pruebas.kagencia.com/infoPaciente', form)
+      // axios.post('http://localhost:3132/', form)
 
          .then(function (response) {
             setLoading(false);
@@ -60,7 +60,7 @@ export const useForm = (initialForm, validationForm, idPatient) => {
       // }
 
       // if
-      // axios.post('https://appicbfcolgate.kagencia.com/api/infoPaciente', data)
+      // axios.post('https://001pruebas.kagencia.com/infoPaciente', data)
       //    .then(function (response) {
       //       console.log(response.data);
       //       submitFormPaciente(response.data);
@@ -73,11 +73,30 @@ export const useForm = (initialForm, validationForm, idPatient) => {
    const handleSubmitClinicalHistory = (e) => {
       e.preventDefault();
 
-      setForm({ documentoPaciente: idPatient })
+      setForm({ noDocumento: 1 })
       // console.log(form);
       // setResponseApi(false);
       setLoading(true);
-      axios.post('https://appicbfcolgate.kagencia.com/api/antecedentes', form)
+      axios.post('https://001pruebas.kagencia.com/antecedentes', form)
+         .then(function (response) {
+            setLoading(false);
+            setResponseApi(true);
+         })
+         .catch(function (error) {
+            setLoading(false);
+            setResponseApi(false);
+            console.log(error);
+         });
+   }
+
+   const handleSubmitAiepi = (e) => {
+      e.preventDefault();
+
+      // setForm({ ...form, noDocumento: idPatient })
+      // console.log(form);
+      // setResponseApi(false);
+      setLoading(true);
+      axios.post('https://001pruebas.kagencia.com/EvaluacionSaludBucal', form)
          .then(function (response) {
             setLoading(false);
             setResponseApi(true);
@@ -97,7 +116,8 @@ export const useForm = (initialForm, validationForm, idPatient) => {
       handleChange,
       handleBlur,
       handleSubmit,
-      handleSubmitClinicalHistory
+      handleSubmitClinicalHistory,
+      handleSubmitAiepi
    }
 
 }

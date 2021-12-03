@@ -1,7 +1,7 @@
 // import BarraFinal from './Components/BarraFinal';
 import RouterDom from './Components/RouterDom';
 import Navbar from './Components/Navbar';
-import { ThemeProvider } from '@mui/material';
+import { Container, ThemeProvider } from '@mui/material';
 import theme from "./Constants/configTheme";
 import './css/App.css';
 
@@ -10,7 +10,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Navbar />
-        <RouterDom />
+        <Container>
+          <RouterDom />
+        </Container>
         {/* <BarraFinal /> */}
       </div>
     </ThemeProvider>

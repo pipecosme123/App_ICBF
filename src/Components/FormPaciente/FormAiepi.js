@@ -1,10 +1,11 @@
-import { Container, Box, Grid, Typography, Paper, List, ListItem, ListItemIcon, Checkbox, ListItemText, TextField, FormControlLabel } from '@mui/material';
 import React from 'react';
+import { Box, Grid, Typography, Paper, Checkbox, TextField, FormControlLabel, Button, CircularProgress, FormControl, FormLabel, RadioGroup, Radio, Divider } from '@mui/material';
 import { ExtraOral, TejidosBlandos, Encias, TejidosDentales } from '../../Constants/arrayAiepi';
 import { useForm } from '../../hooks/useForm';
+import Alerts from '../Alerts';
 
 const initialForm = {
-   Asimetria_ExtraOral_Check: false,
+   Asimetria_ExtraOral_Check: true,
    Asimetria_ExtraOral_Respuesta: "",
    Rubor_ExtraOral_Check: false,
    Rubor_ExtraOral_Respuesta: "",
@@ -75,134 +76,178 @@ const validationForm = (form) => {
 
 const FormAiepi = () => {
 
+   initialForm["noDocumento"] = "1";
+
    const {
       // form,
       // error,
-      // loading,
-      // responseApi,
+      loading,
+      responseApi,
       handleChange,
       // handleBlur,
-      // handleSubmitClinicalHistory
+      handleSubmitAiepi
    } = useForm(initialForm, validationForm);
 
    // console.log(ExtraOral.name);
 
    return (
-      <Container>
-         <Box
-            component="form"
-            sx={{
-               '& .MuiTextField-root': { my: 2, mx: 1, width: '25ch' }
-            }}
-            noValidate elevation={2}
-            autoComplete="off"
-            // onSubmit={handleSubmitClinicalHistory}
-            className="boxContainer boxCenter">
+      <Box
+         component="form"
+         sx={{
+            '& .MuiTextField-root': { my: 2, mx: 0, width: '100%' }
+         }}
+         noValidate elevation={2}
+         autoComplete="off"
+         onSubmit={handleSubmitAiepi}
+         className="boxCenter"
+      >
 
-            <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Evaluación De Salud Bucal</b></Typography>
+         <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Evaluación De Salud Bucal</b></Typography>
 
 
-            <Paper sx={{ p: 2, my: 3, width: '100%' }} elevation={3}>
-               <Typography variant="h5" className="titleForm">EXAMEN EXTRA-ORAL</Typography>
-               <Box sx={{ m: 5 }}>
-                  <Typography variant="subtitle1" gutterBottom component="div">Presencia de:</Typography>
-                  {/* <List sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}> */}
-                  {ExtraOral.map((list, index) => {
+         <Paper sx={{ p: 1, my: 3 }} className="paperAiepi" md={7} xs={12} elevation={3}>
 
-                     return (
-                        <Grid container spacing={2}>
-                           {/* <Box key={index} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}> */}
-                           <Grid item md={7} xs={12}>
-                              <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
-                           </Grid>
-                           <Grid item md={5} xs={12}>
-                              <TextField
-                                 type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" //disabled={!nameForm ? true : false}
-                                 onChange={handleChange}
-                              />
-                           </Grid>{/* </Box> */}
+            <Typography variant="h5" className="titleForm">EXAMEN EXTRA-ORAL</Typography>
+
+            <Box className="boxAiepi">
+               <Typography variant="subtitle1" gutterBottom component="div">Presencia de:</Typography>
+               {ExtraOral.map((list, index) => {
+
+                  return (
+                     <Grid key={index} container className="gridAiepi">
+                        <Grid item md={6} xs={12}>
+                           <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
                         </Grid>
+                        <Grid item md={6} xs={12}>
+                           <TextField
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" // disabled={! ? true : false}
+                              onChange={handleChange}
+                           />
+                        </Grid>
+                     </Grid>
+                  )
+               }
+               )}
+               <TextField
+                  type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
+                  onChange={handleChange}
+               />
+            </Box>
+         </Paper>
+         <Divider variant="middle" />
+         <Paper sx={{ p: 1, my: 3 }} className="paperAiepi" md={7} xs={12} elevation={3}>
+            <Typography variant="h5" gutterBottom component="div" className="titleForm">EXAMEN INTRA-ORAL</Typography>
 
-                     )
-                  }
-                  )}
-                  {/* </List> */}
-                  <TextField
-                     type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
-                     onChange={handleChange} // andleBlur} 
-                  />
-               </Box>
-            </Paper>
+            <Box className="boxAiepi">
+               <Typography variant="subtitle1" gutterBottom component="div">Tejidos blandos:</Typography>
 
-            <Paper sx={{ p: 2, my: 3, width: '70%' }} elevation={3}>
-               <Typography variant="h5" gutterBottom component="div" className="titleForm">EXAMEN INTRA-ORAL</Typography>
-               <Box sx={{ m: 5 }}>
-                  <Typography variant="subtitle1" gutterBottom component="div">Tejidos blandos:</Typography>
-                  <List sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
-                     {TejidosBlandos.map((list, index) => {
+               {TejidosBlandos.map((list, index) => {
+                  return (
+                     <Grid key={index} container className="gridAiepi">
+                        <Grid item md={6} xs={12}>
+                           <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                           <TextField
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              onChange={handleChange}
+                           />
+                        </Grid>
+                     </Grid>
+                  )
+               }
+               )}
+               <TextField
+                  type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
+                  onChange={handleChange} // andleBlur} 
+               />
+            </Box>
+            <Divider variant="middle" />
+            <Box className="boxAiepi">
+               <Typography variant="subtitle1" gutterBottom component="div">Encias con presencia de:</Typography>
+               {Encias.map((list, index) => {
+                  return (
+                     <Grid key={index} container className="gridAiepi">
+                        <Grid item md={6} xs={12}>
+                           <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                           <TextField
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              onChange={handleChange}
+                           />
+                        </Grid>
+                     </Grid>
+                  )
+               }
+               )}
+            </Box>
+            <Divider variant="middle" />
+            <Box className="boxAiepi">
+               <Typography variant="subtitle1" gutterBottom component="div">Tejidos dentales con presencia de:</Typography>
+               {TejidosDentales.map((list, index) => {
+                  return (
+                     <Grid key={index} container className="gridAiepi">
+                        <Grid item md={6} xs={12}>
+                           <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                           <TextField
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              onChange={handleChange}
+                           />
+                        </Grid>
+                     </Grid>
+                  )
+               }
+               )}
+            </Box>
+            <Divider variant="middle" />
+            <Box className="boxAiepi">
+               <Grid container className="gridAiepi">
+                  <Grid item md={6} xs={12}>
+                     <FormControl component="fieldset" required>
+                        <FormLabel component="legend">¿Requiere remisión a tratamiento?:</FormLabel>
+                        <RadioGroup
+                           aria-label="¿Requiere remisión a tratamiento?"
+                           // defaultValue="female"
+                           name="Remision"
+                           row required
+                           onChange={handleChange} //onBlur={handleBlur}
+                        >
+                           <FormControlLabel value="s" control={<Radio />} label="Si" />
+                           <FormControlLabel value="n" control={<Radio />} label="No" />
+                        </RadioGroup>
+                     </FormControl>
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                     <TextField
+                        type="text" variant="outlined" name="complicacionEmbarazo_cual" label="¿Cual?:" size="small"
+                        onChange={handleChange} // onBlur={handleBlur}
+                        className="inputLarge"
+                     />
+                  </Grid>
+               </Grid>
+            </Box>
 
-                        return (
-                           <Box key={index} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
+         </Paper>
 
-                              <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
-                              <TextField
-                                 type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" //disabled={!nameForm ? true : false}
-                                 onChange={handleChange}
-                              />
 
-                           </Box>
-                        )
-                     }
-                     )}
-                  </List>
-                  <TextField
-                     type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
-                     onChange={handleChange} // andleBlur} 
-                  />
-               </Box>
+         <Box sx={{ width: "100%" }} className="submitButton">
+            {!loading &&
+               <Button type="submit" variant="outlined" disableElevation size="large" >
+                  Enviar
+               </Button>
+            }
+            {loading && <CircularProgress />}
 
-               <Box sx={{ m: 5 }}>
-                  <Typography variant="subtitle1" gutterBottom component="div">Encias con presencia de:</Typography>
-                  <List sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
-                     {Encias.map((list, index) => {
-                        return (
-                           <Box key={index} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-
-                              <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
-                              <TextField
-                                 type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" //disabled={!nameForm ? true : false}
-                                 onChange={handleChange}
-                              />
-
-                           </Box>
-                        )
-                     }
-                     )}
-                  </List>
-               </Box>
-
-               <Box sx={{ m: 5 }}>
-                  <Typography variant="subtitle1" gutterBottom component="div">Tejidos dentales con presencia de:</Typography>
-                  <List sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
-                     {TejidosDentales.map((list, index) => {
-                        return (
-                           <Box key={index} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-
-                              <FormControlLabel control={<Checkbox />} label={`${list.item}`} name={`${list.name}`} onChange={handleChange} />
-                              <TextField
-                                 type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" //disabled={!nameForm ? true : false}
-                                 onChange={handleChange}
-                              />
-
-                           </Box>
-                        )
-                     }
-                     )}
-                  </List>
-               </Box>
-            </Paper>
+            {responseApi === true ?
+               (<Alerts alertType="success" alertText="El formulario de <b>Evaluación De Salud Bucal - AIEPI</b> se ha guardado correctamente." />) : ""}
+            {responseApi === false ?
+               (<Alerts alertType="error" alertText="El formulario de <b>Evaluación De Salud Bucal - AIEPI</b> no se ha guardado correctamente." />) : ""}
+            {/* {window.location.href = "/"} */}
          </Box>
-      </Container>
+      </Box>
    );
 };
 

@@ -16,7 +16,7 @@ const Alerts = ({alertType, alertText}) => {
 
    return (
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical, horizontal }}>
-         <Alert severity={alertType}>
+         <Alert severity={alertType} elevation={3}>
             {/* <AlertTitle>¡Bien!</AlertTitle> */}
             <span dangerouslySetInnerHTML={{ __html: `${alertText}` }}></span>
          </Alert>

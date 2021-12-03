@@ -1,10 +1,6 @@
-// import axios from 'axios';
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
-// import InputText from './InputText';
-
-import { Grid, Box, Typography, TextField, RadioGroup, FormControlLabel, FormLabel, Radio, Button, Container, FormControl, CircularProgress } from '@mui/material';
-
+import { Grid, Box, Typography, TextField, RadioGroup, FormControlLabel, FormLabel, Radio, Button, FormControl, CircularProgress, Paper } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
 import Alerts from '../Alerts';
 
@@ -36,7 +32,7 @@ const validationForm = (form) => {
 
    if (!form.noDocumentoPaciente.trim()) {
       errors.noDocumentoPaciente = true;
-   }else if (!form.nombrePaciente.trim()) {
+   } else if (!form.nombrePaciente.trim()) {
       errors.nombrePaciente = true;
    }
 
@@ -59,23 +55,22 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
    } = useForm(initialForm, validationForm);
 
    return (
+      <Box component="form"
+         sx={{
+            '& .MuiTextField-root': { my: 1.5, mx: 0.5, px: 0, width: '26ch' },
+         }}
+         noValidate
+         autoComplete="off"
+         // className="boxContainer"
+         onSubmit={handleSubmit}
+      >
 
-      <Container>
-         <Box component="form"
-            sx={{
-               '& .MuiTextField-root': { my: 0.5, px: 0, width: '26ch' },
-            }}
-            noValidate
-            autoComplete="off"
-            className="boxContainer"
-            onSubmit={handleSubmit}
-         >
-
-            {/* <form > */}
+         {/* <form > */}
+         <Paper sx={{ py: 1, px: 3, my: 3, borderRadius: '16px' }} md={7} xs={12} elevation={3}>
             <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Información Personal del Paciente</b></Typography>
 
             <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap" }} xs={12}>
                   <TextField
                      type="number" variant="outlined" name="noDocumentoPaciente" label="Numero de documento"
                      onChange={handleChange} onBlur={handleBlur}
@@ -83,11 +78,7 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
                      helperText={error.noDocumentoPaciente ? "Este campo es requerido" : ""} error={error.noDocumentoPaciente ? true : false}
                   // className="inputLarge"
                   />
-               </Grid>
-            </Grid>
 
-            <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
                   <TextField
                      type="text" variant="outlined" name="nombrePaciente" label="Nombres"
                      onChange={handleChange} onBlur={handleBlur}
@@ -95,20 +86,19 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
                      helperText={error.nombrePaciente ? "Este campo es requerido" : ""} error={error.nombrePaciente ? true : false}
                   // className="inputLarge"
                   />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
+
                   <TextField
                      type="text" variant="outlined" name="apellidoPaciente" label="Apellidos"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.apellidoPaciente ? "Este campo es requerido" : ""}
+                  // helperText={error.apellidoPaciente ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
                </Grid>
             </Grid>
 
             <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
                      type="date" variant="outlined" name="fechaNacimiento" label="Fecha de nacimiento"
                      onChange={handleChange} onBlur={handleBlur}
@@ -119,18 +109,16 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
                         shrink: true,
                      }}
                   />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
+
                   <TextField
                      type="text" variant="outlined" name="lugarNacimiento" label="Lugar de nacimiento"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.lugarNacimiento ? "Este campo es requerido" : ""}
+                  // helperText={error.lugarNacimiento ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
-                  <FormControl component="fieldset" required>
+
+                  <FormControl component="fieldset" required sx={{ mx: 1 }}>
                      <FormLabel component="legend">Ubicacion:</FormLabel>
                      <RadioGroup
                         name="ubicacionLugarNacimiento"
@@ -144,36 +132,34 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
                </Grid>
             </Grid>
 
+
             <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
                      type="text" variant="outlined" name="direccionResidencial" label="Dirección de residencia"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.direccionResidencial ? "Este campo es requerido" : ""}
+                  // helperText={error.direccionResidencial ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
+
                   <TextField
                      type="text" variant="outlined" name="barrioResidencial" label="Barrio"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.barrioResidencial ? "Este campo es requerido" : ""}
+                  // helperText={error.barrioResidencial ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
+
                   <TextField
                      type="text" variant="outlined" name="ciudadResidencial" label="Ciudad/Municipio"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.ciudadResidencial ? "Este campo es requerido" : ""}
+                  // helperText={error.ciudadResidencial ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
-               <Grid item>
-                  <FormControl component="fieldset" required>
+
+                  <FormControl component="fieldset" required sx={{ mx: 1 }}>
                      <FormLabel component="legend">Ubicacion:</FormLabel>
                      <RadioGroup
                         name="ubicacionResidencial"
@@ -188,19 +174,16 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
             </Grid>
 
             <Grid container>
-
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
                      type="text" variant="outlined" name="eps" label="E.P.S."
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.eps ? "Este campo es requerido" : ""}
+                  // helperText={error.eps ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
 
-               <Grid item>
-                  <FormControl component="fieldset" required>
+                  <FormControl component="fieldset" required sx={{ mx: 1 }}>
                      <FormLabel component="legend">....................:</FormLabel>
                      <RadioGroup
                         name="subsidio"
@@ -215,81 +198,77 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
                </Grid>
 
             </Grid>
+         </Paper>
 
+
+         {/* <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Información Personal del Acudiente</b></Typography> */}
+
+         <Paper sx={{ py: 1, px: 3, my: 3, borderRadius: '16px' }} md={7} xs={12} elevation={3}>
             <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Información Personal del Acudiente</b></Typography>
-
             <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
                      type="number" variant="outlined" name="acudienteIdentificación" label="Numero de documento"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.acudienteIdentificación ? "Este campo es requerido" : ""}
+                  // helperText={error.acudienteIdentificación ? "Este campo es requerido" : ""}
+                  // className="inputLarge"
+                  />
+
+                  <TextField
+                     type="text" variant="outlined" name="acudienteNombre" label="Nombre"
+                     onChange={handleChange} onBlur={handleBlur}
+                     required
+                  // helperText={error.acudienteNombre ? "Este campo es requerido" : ""}
+                  // className="inputLarge"
+                  />
+
+                  <TextField
+                     type="text" variant="outlined" name="acudienteApellido" label="Apellidos"
+                     onChange={handleChange} onBlur={handleBlur}
+                     required
+                  // helperText={error.acudienteApellido ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
                </Grid>
             </Grid>
 
             <Grid container>
-               <Grid item lg={3} md={4} xs={12}>
-                  <TextField
-                     type="text" variant="outlined" name="acudienteNombre" label="Nombre"
-                     onChange={handleChange} onBlur={handleBlur}
-                     required
-                     // helperText={error.acudienteNombre ? "Este campo es requerido" : ""}
-                  // className="inputLarge"
-                  />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
-                  <TextField
-                     type="text" variant="outlined" name="acudienteApellido" label="Apellidos"
-                     onChange={handleChange} onBlur={handleBlur}
-                     required
-                     // helperText={error.acudienteApellido ? "Este campo es requerido" : ""}
-                  // className="inputLarge"
-                  />
-               </Grid>
-               <Grid item lg={3} md={4} xs={12}>
+               <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
                      type="number" variant="outlined" name="acudienteTeléfono" label="Telefono"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.acudienteTeléfono ? "Este campo es requerido" : ""}
+                  // helperText={error.acudienteTeléfono ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
-               </Grid>
-               {/* </Grid> */}
 
-               {/* <Grid container> */}
-               <Grid item lg={3} md={4} xs={12}>
                   <TextField
                      type="text" variant="outlined" name="acudienteParentesco" label="Parentesco con el niño(a)"
                      onChange={handleChange} onBlur={handleBlur}
                      required
-                     // helperText={error.acudienteParentesco ? "Este campo es requerido" : ""}
+                  // helperText={error.acudienteParentesco ? "Este campo es requerido" : ""}
                   // className="inputLarge"
                   />
                </Grid>
             </Grid>
+         </Paper>
 
-            <Box sx={{ width: "100%" }} className="submitButton">
-               {!loading &&
-                  <Button type="submit" variant="outlined" disableElevation size="large" >
-                     Enviar
-                  </Button>
-               }
-               {loading && <CircularProgress />}
-               
-               {responseApi === true ? 
-               (<Alerts alertType="success" alertText="El formulario de <b>Antecedentes</b> se ha guardado correctamente." />) : ""}
-               {responseApi === false ? 
-               (<Alerts alertType="error" alertText="El formulario de <b>Antecedentes</b> no se ha guardado correctamente." />) : ""}
+         <Box sx={{ width: "100%" }} className="submitButton">
+            {!loading &&
+               <Button type="submit" variant="outlined" disableElevation size="large" >
+                  Enviar
+               </Button>
+            }
+            {loading && <CircularProgress />}
 
-            </Box>
-         </Box >
-      </Container>
+            {responseApi === true ?
+               (<Alerts alertType="success" alertText="El formulario de <b>Informacion Personal del paciente</b> se ha guardado correctamente." />) : ""}
+            {responseApi === false ?
+               (<Alerts alertType="error" alertText="El formulario de <b>Informacion Personal del paciente</b> no se pudo guardar correctamente." />) : ""}
 
-
+         </Box>
+      </Box >
    );
 };
 

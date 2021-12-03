@@ -1,12 +1,12 @@
-.noVisible{
+.noVisible {
    display: none;
 }
 
-.visible{
+.visible {
    display: block;
 }
 
-.boxContainer{
+.boxContainer {
    /* background: #87cefa; */
    border-radius: 15px;
    border: 0.5px solid rgb(175, 175, 175);
@@ -14,36 +14,64 @@
    margin-top: 3em;
 }
 
-.boxCenter{
+.boxCenter {
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
-.titleH1{
+.titleH1 {
    text-align: center;
    margin: 1em 0;
 }
 
-.inputLarge{
+.inputLarge {
    display: block;
-   width: 100%;
+   width: 500px;
 }
 
-.titleForm{
+.titleForm {
    padding: 1em 0 0.5em 0;
    text-align: center;
    /* font-size: 8em; */
 }
 
-.buttonSubmit{
+.buttonSubmit {
    margin: 10em auto;
    background: magenta;
 }
 
-.submitButton{
+.submitButton {
    text-align: center;
    /* padding: 0 50%; */
    /* display: flex; */
    /* justify-content: center; */
+}
+
+.paperAiepi {
+   width: 70%;
+}
+
+.boxAiepi {
+   margin: 40px;
+}
+
+.gridAiepi {
+   display: flex;
+   align-items: center;
+}
+
+/* .MuiTextField-root {
+   margin: 16px 8px;
+   width: "70%"
+} */
+
+@media only screen and (max-width: 480px) {
+   .paperAiepi {
+      width: 100%;
+   }
+
+   .boxAiepi {
+      margin: 40px 10px;
+   }
 }
