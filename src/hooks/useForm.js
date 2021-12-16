@@ -9,26 +9,21 @@ export const useForm = (initialForm, validationForm, idPatient) => {
    const [responseApi, setResponseApi] = useState(null);
 
    const handleChange = (e) => {
-      // const { name, value } = e.target;
+
       const target = e.target;
       const value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
-      
+
       setForm({
          ...form,
          [name]: value
       });
-      // console.log(form);
    };
 
    const handleBlur = (e) => {
       handleChange(e);
       setError(validationForm(form));
    };
-
-   // const submitResponseApi = () => {
-   //    submitFormPaciente
-   // }
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -40,42 +35,27 @@ export const useForm = (initialForm, validationForm, idPatient) => {
 
       setError(validationForm(form));
       setLoading(true);
-      axios.post('https://001pruebas.kagencia.com/infoPaciente', form)
-      // axios.post('http://localhost:3132/', form)
 
+      axios.post('https://001pruebas.kagencia.com/infoPaciente', form)
          .then(function (response) {
             setLoading(false);
             setResponseApi(true);
-            // console.log(response.data);
-            // console.log("--------", responseApi)
-            // submitFormPaciente(response.data);
          })
          .catch(function (error) {
             setLoading(false);
             setResponseApi(false);
             console.log(error);
-         });
-      // } else {
-      // return;
-      // }
-
-      // if
-      // axios.post('https://001pruebas.kagencia.com/infoPaciente', data)
-      //    .then(function (response) {
-      //       console.log(response.data);
-      //       submitFormPaciente(response.data);
-      //    })
-      //    .catch(function (error) {
-      //       console.log(error);
-      //    });
+         })
+         .finally(() =>
+            setTimeout(() => setResponseApi(null), 6000)
+         );
    };
 
    const handleSubmitClinicalHistory = (e) => {
       e.preventDefault();
+// console.log(form);
+      // setForm({ noDocumento: 5 })
 
-      setForm({ noDocumento: 1 })
-      // console.log(form);
-      // setResponseApi(false);
       setLoading(true);
       axios.post('https://001pruebas.kagencia.com/antecedentes', form)
          .then(function (response) {
@@ -86,15 +66,15 @@ export const useForm = (initialForm, validationForm, idPatient) => {
             setLoading(false);
             setResponseApi(false);
             console.log(error);
-         });
+         })
+         .finally(() =>
+            setTimeout(() => setResponseApi(null), 6000)
+         );
    }
 
    const handleSubmitAiepi = (e) => {
       e.preventDefault();
 
-      // setForm({ ...form, noDocumento: idPatient })
-      // console.log(form);
-      // setResponseApi(false);
       setLoading(true);
       axios.post('https://001pruebas.kagencia.com/EvaluacionSaludBucal', form)
          .then(function (response) {
@@ -105,7 +85,10 @@ export const useForm = (initialForm, validationForm, idPatient) => {
             setLoading(false);
             setResponseApi(false);
             console.log(error);
-         });
+         })
+         .finally(() =>
+            setTimeout(() => setResponseApi(null), 6000)
+         );
    }
 
    return {

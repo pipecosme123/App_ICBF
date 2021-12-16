@@ -5,62 +5,63 @@ import { useForm } from '../../hooks/useForm';
 import Alerts from '../Alerts';
 
 const initialForm = {
-   Asimetria_ExtraOral_Check: true,
-   Asimetria_ExtraOral_Respuesta: "",
-   Rubor_ExtraOral_Check: false,
-   Rubor_ExtraOral_Respuesta: "",
-   DolorEnCara_ExtraOral_Check: false,
-   DolorEnCara_ExtraOral_Respuesta: "",
-   OtroSigno_ExtraOral: "",
-   Lengua_TejidosBlandos_Check: false,
-   Lengua_TejidosBlandos_Respuesta: "",
-   Carrillos_TejidosBlandos_Check: false,
-   Carrillos_TejidosBlandos_Respuesta: "",
-   PisoBoca_TejidosBlandos_Check: false,
-   PisoBoca_TejidosBlandos_Respuesta: "",
-   Otro_TejidosBlandos: "",
-   Fisuras_Encias_Check: false,
-   Fisuras_Encias_Respuesta: "",
-   Tumefaccion_Encias_Check: false,
-   Tumefaccion_Encias_Respuesta: "",
-   Gingivitis_Encias_Check: false,
-   Gingivitis_Encias_Respuesta: "",
-   PlacaBactMadura_Encias_Check: false,
-   PlacaBactMadura_Encias_Respuesta: "",
-   PlacaBactInmadura_Encias_Check: false,
-   PlacaBactInmadura_Encias_Respuesta: "",
-   Calculos_Encias_Check: false,
-   Calculos_Encias_Respuesta: "",
-   CambioColor_TejidosDentales_Check: false,
-   CambioColor_TejidosDentales_Respuesta: "",
-   Fracturas_TejidosDentales_Check: false,
-   Fracturas_TejidosDentales_Respuesta: "",
-   MovilidadPatologica_TejidosDentales_Check: false,
-   MovilidadPatologica_TejidosDentales_Respuesta: "",
-   Extracion_TejidosDentales_Check: false,
-   Extracion_TejidosDentales_Respuesta: "",
-   LecionesManchas_TejidosDentales_Check: false,
-   LecionesManchas_TejidosDentales_Respuesta: "",
-   Microcavidades_TejidosDentales_Check: false,
-   Microcavidades_TejidosDentales_Respuesta: "",
-   CavidadesDetectables_TejidosDentales_Check: false,
-   CavidadesDetectables_TejidosDentales_Respuesta: "",
-   ObtCompatibles_TejidosDentales_Check: false,
-   ObtCompatibles_TejidosDentales_Respuesta: "",
-   ObtRetentivas_TejidosDentales_Check: false,
-   ObtRetentivas_TejidosDentales_Respuesta: "",
-   ObtDefectuosas_TejidosDentales_Check: false,
-   ObtDefectuosas_TejidosDentales_Respuesta: "",
-   Alteraciones_TejidosDentales_Check: false,
-   Alteraciones_TejidosDentales_Respuesta: "",
-   DefectosEsmalte_TejidosDentales_Check: false,
-   DefectosEsmalte_TejidosDentales_Respuesta: "",
-   AlteracionesEsqueleticas_TejidosDentales_Check: false,
-   AlteracionesEsqueleticas_TejidosDentales_Respuesta: "",
-   Maloclusion_TejidosDentales_Check: false,
-   Maloclusion_TejidosDentales_Respuesta: "",
-   Remision: "",
-   Observaciones: ""
+   asimetriaExtraOral_Check: false,
+   asimetriaExtraOral_Respuesta: '',
+   ruborExtraOral_Check: false,
+   ruborExtraOral_Respuesta: '',
+   dolorEnCaraExtraOral_Check: false,
+   dolorEnCaraExtraOral_Respuesta: '',
+   otroSignoExtraOral: '',
+   lenguaTejidosBlandos_Check: false,
+   lenguaTejidosBlandos_Respuesta: '',
+   carrillosTejidosBlandos_Check: false,
+   carrillosTejidosBlandos_Respuesta: '',
+   pisoBocaTejidosBlandos_Check: false,
+   pisoBocaTejidosBlandos_Respuesta: '',
+   otroTejidosBlandos: '',
+   fisurasEncias_Check: false,
+   fisurasEncias_Respuesta: '',
+   tumefaccionEncias_Check: false,
+   tumefaccionEncias_Respuesta: '',
+   gingivitisEncias_Check: false,
+   gingivitisEncias_Respuesta: '',
+   placaBactMaduraEncias_Check: false,
+   placaBactMaduraEncias_Respuesta: '',
+   placaBactInmaduraEncias_Check: false,
+   placaBactInmaduraEncias_Respuesta: '',
+   calculosEncias_Check: false,
+   calculosEncias_Respuesta: '',
+   cambioColorTejidosDentales_Check: false,
+   cambioColorTejidosDentales_Respuesta: '',
+   fracturasTejidosDentales_Check: false,
+   fracturasTejidosDentales_Respuesta: '',
+   movilidadPatologicaTejidosDentales_Check: false,
+   movilidadPatologicaTejidosDentales_Respuesta: '',
+   extracionTejidosDentales_Check: false,
+   extracionTejidosDentales_Respuesta: '',
+   lecionesManchasTejidosDentales_Check: false,
+   lecionesManchasTejidosDentales_Respuesta: '',
+   microcavidadesTejidosDentales_Check: false,
+   microcavidadesTejidosDentales_Respuesta: '',
+   cavidadesDetectablesTejidosDentales_Check: false,
+   cavidadesDetectablesTejidosDentales_Respuesta: '',
+   obtCompatiblesTejidosDentales_Check: false,
+   obtCompatiblesTejidosDentales_Respuesta: '',
+   obtRetentivasTejidosDentales_Check: false,
+   obtRetentivasTejidosDentales_Respuesta: '',
+   obtDefectuosasTejidosDentales_Check: false,
+   obtDefectuosasTejidosDentales_Respuesta: '',
+   alteracionesTejidosDentales_Check: false,
+   alteracionesTejidosDentales_Respuesta: '',
+   defectosEsmalteTejidosDentales_Check: false,
+   defectosEsmalteTejidosDentales_Respuesta: '',
+   alteracionesEsqueleticasTejidosDentales_Check: false,
+   alteracionesEsqueleticasTejidosDentales_Respuesta: '',
+   maloclusionTejidosDentales_Check: false,
+   maloclusionTejidosDentales_Respuesta: '',
+   remision: '',
+   observaciones: '',
+   clasificar: ''
 }
 
 const validationForm = (form) => {
@@ -76,7 +77,7 @@ const validationForm = (form) => {
 
 const FormAiepi = () => {
 
-   initialForm["noDocumento"] = "1";
+   initialForm["noDocumento"] = "5";
 
    const {
       // form,
@@ -102,15 +103,22 @@ const FormAiepi = () => {
          className="boxCenter"
       >
 
+
          <Typography variant="h4" gutterBottom component="div" className="titleForm"><b>Evaluación De Salud Bucal</b></Typography>
 
+         <Paper sx={{ p: 1, my: 3, borderRadius: '16px' }} className="paperAiepi" md={7} xs={12} elevation={3}>
 
-         <Paper sx={{ p: 1, my: 3 }} className="paperAiepi" md={7} xs={12} elevation={3}>
+            <Typography variant="h4" className="titleForm"><b>Observar</b></Typography>
 
-            <Typography variant="h5" className="titleForm">EXAMEN EXTRA-ORAL</Typography>
+            <Divider sx={{ my: 3 }}>
+               <Typography variant="h5">
+                  Examen Extra-Oral
+               </Typography>
+            </Divider>
+
 
             <Box className="boxAiepi">
-               <Typography variant="subtitle1" gutterBottom component="div">Presencia de:</Typography>
+               <Typography variant="h6" gutterBottom component="div"><b> Presencia de:</b></Typography>
                {ExtraOral.map((list, index) => {
 
                   return (
@@ -120,7 +128,7 @@ const FormAiepi = () => {
                         </Grid>
                         <Grid item md={6} xs={12}>
                            <TextField
-                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" // disabled={! ? true : false}
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" multiline // disabled={! ? true : false}
                               onChange={handleChange}
                            />
                         </Grid>
@@ -129,17 +137,23 @@ const FormAiepi = () => {
                }
                )}
                <TextField
-                  type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
+                  type="text" variant="outlined" name="otroSignoExtraOral" label="Otro Signo:" size="small" //disabled={!nameForm ? true : false}
                   onChange={handleChange}
                />
+               {/* <TextField
+                  type="text" variant="outlined" name="otroTejidosBlandos" label="Otro Signo:" size="small" //disabled={!nameForm ? true : false}
+                  onChange={handleChange} // andleBlur} 
+               /> */}
             </Box>
-         </Paper>
-         <Divider variant="middle" />
-         <Paper sx={{ p: 1, my: 3 }} className="paperAiepi" md={7} xs={12} elevation={3}>
-            <Typography variant="h5" gutterBottom component="div" className="titleForm">EXAMEN INTRA-ORAL</Typography>
+
+            <Divider sx={{ my: 3 }}>
+               <Typography variant="h5">
+                  Examen Intra-Oral
+               </Typography>
+            </Divider>
 
             <Box className="boxAiepi">
-               <Typography variant="subtitle1" gutterBottom component="div">Tejidos blandos:</Typography>
+               <Typography variant="h6" gutterBottom component="div"><b> Tejidos blandos:</b></Typography>
 
                {TejidosBlandos.map((list, index) => {
                   return (
@@ -149,7 +163,7 @@ const FormAiepi = () => {
                         </Grid>
                         <Grid item md={6} xs={12}>
                            <TextField
-                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" multiline //disabled={!nameForm ? true : false}
                               onChange={handleChange}
                            />
                         </Grid>
@@ -158,13 +172,13 @@ const FormAiepi = () => {
                }
                )}
                <TextField
-                  type="text" variant="outlined" name="OtroSigno_ExtraOral" label="Otro:" size="small" //disabled={!nameForm ? true : false}
+                  type="text" variant="outlined" name="otroTejidosBlandos" label="Otro Signo:" size="small" //disabled={!nameForm ? true : false}
                   onChange={handleChange} // andleBlur} 
                />
             </Box>
             <Divider variant="middle" />
             <Box className="boxAiepi">
-               <Typography variant="subtitle1" gutterBottom component="div">Encias con presencia de:</Typography>
+               <Typography variant="h6" gutterBottom component="div"><b> Encias con presencia de:</b></Typography>
                {Encias.map((list, index) => {
                   return (
                      <Grid key={index} container className="gridAiepi">
@@ -173,7 +187,7 @@ const FormAiepi = () => {
                         </Grid>
                         <Grid item md={6} xs={12}>
                            <TextField
-                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" multiline //disabled={!nameForm ? true : false}
                               onChange={handleChange}
                            />
                         </Grid>
@@ -184,7 +198,7 @@ const FormAiepi = () => {
             </Box>
             <Divider variant="middle" />
             <Box className="boxAiepi">
-               <Typography variant="subtitle1" gutterBottom component="div">Tejidos dentales con presencia de:</Typography>
+               <Typography variant="h6" gutterBottom component="div"><b> Tejidos dentales con presencia de:</b></Typography>
                {TejidosDentales.map((list, index) => {
                   return (
                      <Grid key={index} container className="gridAiepi">
@@ -193,7 +207,7 @@ const FormAiepi = () => {
                         </Grid>
                         <Grid item md={6} xs={12}>
                            <TextField
-                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" //disabled={!nameForm ? true : false}
+                              type="text" variant="outlined" name={`${list.nameInput}`} label="¿Qué observa?:" size="small" className="inputLarge" multiline //disabled={!nameForm ? true : false}
                               onChange={handleChange}
                            />
                         </Grid>
@@ -211,25 +225,100 @@ const FormAiepi = () => {
                         <RadioGroup
                            aria-label="¿Requiere remisión a tratamiento?"
                            // defaultValue="female"
-                           name="Remision"
+                           name="remision"
                            row required
                            onChange={handleChange} //onBlur={handleBlur}
                         >
-                           <FormControlLabel value="s" control={<Radio />} label="Si" />
-                           <FormControlLabel value="n" control={<Radio />} label="No" />
+                           <FormControlLabel value={true} control={<Radio />} label="Si" />
+                           <FormControlLabel value={false} control={<Radio />} label="No" />
                         </RadioGroup>
                      </FormControl>
                   </Grid>
                   <Grid item md={6} xs={12}>
                      <TextField
+                        type="text" variant="outlined" name="observaciones" size="small"
+                        label="Observaciones:" onChange={handleChange} className="inputLarge"
+                        multiline
+                     />
+                     {/* <TextField
                         type="text" variant="outlined" name="complicacionEmbarazo_cual" label="¿Cual?:" size="small"
                         onChange={handleChange} // onBlur={handleBlur}
                         className="inputLarge"
-                     />
+                     /> */}
                   </Grid>
                </Grid>
             </Box>
 
+         </Paper>
+
+         <Paper sx={{ p: 1, my: 3, borderRadius: '16px' }} className="paperAiepi" md={7} xs={12} elevation={3}>
+            <Typography variant="h4" className="titleForm"><b>Clasificar</b></Typography>
+            <Box className="boxAiepi">
+               <FormControl component="fieldset">
+                  <RadioGroup
+                     aria-label="gender"
+                     name="clasificar"
+                     // value={value}
+                     onChange={handleChange}
+                  >
+                     <FormControlLabel value="Paciente sano" control={<Radio />} label="Paciente sano" />
+                     <Typography variant="subtitle2">
+                        <ul>
+                           <li>Encías rosadas</li>
+                           <li>Ausencia de placa bacteriana o placa inmadura</li>
+                           <li>Dientes sin lesiones</li>
+                           <li>Obturaciones compatibles</li>
+                        </ul>
+                     </Typography>
+
+                     <FormControlLabel value="Enfermedad bucal leve / moderada" control={<Radio />} label="Enfermedad bucal leve / moderada" />
+                     <Typography variant="subtitle2">
+                        <ul>
+                           <li>Inflamación de encías</li>
+                           <li>Lesiones de mancha blanca – café por caries</li>
+                           <li>Microcavidades por caries</li>
+                           <li>Presencia de placa bacteriana madura</li>
+                           <li>Obturaciones retentivas o defectuosas</li>
+                           <li>Defectos del desarrollo del esmalte</li>
+                        </ul>
+                     </Typography>
+
+                     <FormControlLabel value="Enfermedad bucal grave" control={<Radio />} label="Enfermedad bucal grave" />
+                     <Typography variant="subtitle2">
+                        <ul>
+                           <li>Dolor intenso</li>
+                           <li>Inflamación de encías</li>
+                           <li>Cavidades detectables en dentina o extensas</li>
+                           <li>Maloclusiones</li>
+                           <li>Movilidad por patología</li>
+                        </ul>
+                     </Typography>
+
+                     <FormControlLabel value="Alto riesgo de enfermedad: Compromiso sistematico" control={<Radio />} label="Alto riesgo de enfermedad: Compromiso sistematico" />
+                     <Typography variant="subtitle2">
+                        <ul>
+                           <li>Inflamación intra o extraoral</li>
+                           <li>Malestar general</li>
+                           <li>Fiebre, inapetencia, decaimiento</li>
+                           <li>Pus, exudado</li>
+                           <li>Enrojecimiento y deformidad de la cara</li>
+                           <li>Limitación de la apertura bucal</li>
+                        </ul>
+                     </Typography>
+
+                     <FormControlLabel value="Trauma dental" control={<Radio />} label="Trauma dental" />
+                     <Typography variant="subtitle2">
+                        <ul>
+                           <li>Movilidad dental trauma</li>
+                           <li>Cambio de color en el diente por trauma</li>
+                           <li>Cambio de color en la encía por trauma</li>
+                           <li>Fractura por trauma</li>
+                           <li>Pérdida del diente por trauma</li>
+                        </ul>
+                     </Typography>
+                  </RadioGroup>
+               </FormControl>
+            </Box>
          </Paper>
 
 

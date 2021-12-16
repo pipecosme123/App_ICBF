@@ -72,7 +72,7 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
             <Grid container>
                <Grid item sx={{ display: "flex", flexWrap: "wrap" }} xs={12}>
                   <TextField
-                     type="number" variant="outlined" name="noDocumentoPaciente" label="Numero de documento"
+                     type="number" variant="outlined" name="noDocumentoPaciente" label="Número de documento"
                      onChange={handleChange} onBlur={handleBlur}
                      required
                      helperText={error.noDocumentoPaciente ? "Este campo es requerido" : ""} error={error.noDocumentoPaciente ? true : false}
@@ -208,7 +208,7 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
             <Grid container>
                <Grid item sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }} xs={12}>
                   <TextField
-                     type="number" variant="outlined" name="acudienteIdentificación" label="Numero de documento"
+                     type="number" variant="outlined" name="acudienteIdentificación" label="Número de documento"
                      onChange={handleChange} onBlur={handleBlur}
                      required
                   // helperText={error.acudienteIdentificación ? "Este campo es requerido" : ""}
@@ -263,9 +263,9 @@ const FormPersonalInformation = ({ submitFormPaciente }) => {
             {loading && <CircularProgress />}
 
             {responseApi === true ?
-               (<Alerts alertType="success" alertText="El formulario de <b>Informacion Personal del paciente</b> se ha guardado correctamente." />) : ""}
+               (<Alerts alertType="success" alertText="El formulario de <b>Informacion Personal del Paciente</b> se ha guardado correctamente." />) : ""}
             {responseApi === false ?
-               (<Alerts alertType="error" alertText="El formulario de <b>Informacion Personal del paciente</b> no se pudo guardar correctamente." />) : ""}
+               (<Alerts alertType="error" alertText="El formulario de <b>Informacion Personal del Paciente</b> no se pudo guardar correctamente." />) : ""}
 
          </Box>
       </Box >

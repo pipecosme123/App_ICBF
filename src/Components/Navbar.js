@@ -5,11 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import { makeStyles } from '@mui/styles';
+
+const useStyle = makeStyles(theme => ({
+  offset: theme.mixins.toolbar
+}))
 
 const Navbar = () => {
-   return (
-      <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" elevation={0}>
+
+  const classes = useStyle();
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed" elevation={0} sx={{ color: "#e3f2fd", mb: 2 }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -26,8 +34,9 @@ const Navbar = () => {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
+      <div className={classes.offset}></div>
     </Box>
-   );
+  );
 };
 
 export default Navbar;
